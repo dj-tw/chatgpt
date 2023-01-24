@@ -1,3 +1,7 @@
+"""
+Main Chat class for having a conversation with Openai's ChatGPT
+"""
+
 from api_key import api_key
 import openai
 
@@ -10,9 +14,10 @@ class Chat:
         :param engine:
         """
         self.model_engine = engine
-        self.history = "Reply in this fashion, BOT: <ANSWER>"
+        self.history = None
+        self.clear_conversation()
 
-    def _chat(self, prompt):
+    def chat(self, prompt):
         """
         Raw chat, if you want to remember history use __call__
         :param prompt:
@@ -35,9 +40,15 @@ class Chat:
         Forget what has been discussed and start over fresh
         :return: None
         """
-        self.history = ""
+        self.history = "Reply in this fashion, BOT: <ANSWER>"
 
     def __call__(self, prompt, show_history=False):
+        """
+        The main external method
+        :param prompt: Your prompt text
+        :param show_history: where to show the full prompt with conversation history
+        :return:
+        """
         full_prompt = f"conversation_history=({self.history}), USER: {prompt}"
 
         if show_history:
@@ -45,6 +56,6 @@ class Chat:
             print(full_prompt)
             print('------------------')
 
-        response = self._chat(full_prompt)
+        response = self.chat(full_prompt)
         self.history += f'\nUSER: {prompt}, \n{response}'
         print(response)
