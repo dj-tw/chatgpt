@@ -1,4 +1,4 @@
-from chatgpt.api_key import api_key
+from api_key import api_key
 import openai
 import uuid
 
@@ -45,6 +45,7 @@ def run():
     while True:
         message = input()
         c(message)
+
 
 if __name__ == "__main__":
     run()
