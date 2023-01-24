@@ -1,5 +1,13 @@
 # chatgpt
 
+A quick and dirty chatgpt client. Unlike the base API, this will
+remember the last things that were discussed so you can have an 
+actual conversation. It does this with a simple hack of storing 
+the conversation and sending it back in. Perhaps there is a 
+better way.
+
+Not entirely sure if this connects to Davinci-003 or ChatGPT. It is a bit confusing.
+
 ## Get API key
 
 Get from openai.com
